@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews</title>
+  <style>
+    .hide {
+      display: none;
+    }
+    button {
+      cursor: pointer;
+    }
+    .outer-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: lightblue;
+      height: 100vh;
+    }
+    .header {
+      margin-bottom: 2rem;
+    }
+    .content {
+      background-color: #fff;
+      border-radius: 0.25rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card {
+      margin-bottom: 2rem;
+    }
+    .card img {
+    border-radius: 50%;
+    }
+    .controls {
+      text-align: center;
+    }
+    .controls .control-direction {
+      margin-bottom: 2rem;
+    }
+    .controls .control-direction button {
+      border: none;
+      background-color: inherit;
+      font-size: 2rem;
+    }
+    .button-surprise button {
+      padding: 1rem;
+      border: none;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="main">
+    <div class="outer-container">
+      <div class="header"><h2>Our Reviews</h2></div>
+      <div class="content">
+        <div class="controls">
+          <div class="control-direction">
+            <button class="button-previous"><</button>
+            <button class="button-next">></button>
+          </div>
+          <div class="button-surprise"><button>Surprise Me</button></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const data = [
+      {
+        name: {
+          title: "Miss",
+          first: "Otacília",
+          last: "Silva",
+        },
+        email: "otacilia.silva@example.com",
+        phone: "(08) 4621-9273",
+        id: {
+          name: "",
+          value: null,
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/women/79.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/79.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/79.jpg",
+        },
+        nat: "BR",
+      },
+      {
+        name: {
+          title: "Ms",
+          first: "Chloe",
+          last: "Hamilton",
+        },
+        email: "chloe.hamilton@example.com",
+
+        phone: "061-509-1900",
+        id: { name: "PPS", value: "1452909T" },
+        picture: {
+          large: "https://randomuser.me/api/portraits/women/13.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/13.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/13.jpg",
+        },
+        nat: "IE",
+      },
+      {
+        name: {
+          title: "Miss",
+          first: "Sana",
+          last: "Seglem",
+        },
+        email: "sana.seglem@example.com",
+
+        phone: "84691420",
+        id: {
+          name: "FN",
+          value: "30118736024",
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/women/89.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/89.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/89.jpg",
+        },
+        nat: "NO",
+      },
+      {
+        name: {
+          title: "Miss",
+          first: "Selma",
+          last: "Johansen",
+        },
+        email: "selma.johansen@example.com",
+
+        phone: "80565692",
+        id: {
+          name: "CPR",
+          value: "271060-0765",
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/women/63.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/63.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/63.jpg",
+        },
+        nat: "DK",
+      },
+      {
+        name: {
+          title: "Mr",
+          first: "Lenni",
+          last: "Tuomi",
+        },
+        email: "lenni.tuomi@example.com",
+
+        phone: "05-872-890",
+        id: {
+          name: "HETU",
+          value: "NaNNA473undefined",
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/men/91.jpg",
+          medium: "https://randomuser.me/api/portraits/med/men/91.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/men/91.jpg",
+        },
+        nat: "FI",
+      },
+      {
+        name: {
+          title: "Mr",
+          first: "Tom",
+          last: "Wells",
+        },
+        email: "tom.wells@example.com",
+
+        phone: "0151 617 7675",
+        id: {
+          name: "NINO",
+          value: "AC 56 34 61 S",
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/men/62.jpg",
+          medium: "https://randomuser.me/api/portraits/med/men/62.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/men/62.jpg",
+        },
+        nat: "GB",
+      },
+      {
+        name: { title: "Mr", first: "Zeferino", last: "Ramos" },
+        email: "zeferino.ramos@example.com",
+
+        phone: "(76) 1295-9898",
+        id: {
+          name: "",
+          value: null,
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/men/22.jpg",
+          medium: "https://randomuser.me/api/portraits/med/men/22.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/men/22.jpg",
+        },
+        nat: "BR",
+      },
+      {
+        name: {
+          title: "Ms",
+          first: "Carla",
+          last: "Reid",
+        },
+        email: "carla.reid@example.com",
+
+        phone: "(431)-951-1608",
+        id: {
+          name: "SSN",
+          value: "408-86-6482",
+        },
+        picture: {
+          large: "https://randomuser.me/api/portraits/women/43.jpg",
+          medium: "https://randomuser.me/api/portraits/med/women/43.jpg",
+          thumbnail: "https://randomuser.me/api/portraits/thumb/women/43.jpg",
+        },
+        nat: "US",
+      },
+    ];
+
+    let html = "";
+    data.forEach(function(currentUser, index) {
+      console.log(currentUser);
+      html +=
+        `
+        <div class="card ${index === 0 ? "selected" : "hide"}">
+          <img src=${currentUser.picture.large} alt=${currentUser.email}>
+          <p>${currentUser.name.title} ${currentUser.name.first} ${currentUser.name.last} - ${currentUser.nat}</p>
+          <div>${currentUser.email}</div>
+          <div>${currentUser.phone}</div>
+        </div>
+        `
+    });
+
+    document.querySelector(".content").insertAdjacentHTML("afterbegin", html);
+
+    document.querySelector(".button-next").addEventListener("click", function() {
+      const currentCard = document.querySelector(".card.selected");
+
+      const nextSibling = currentCard.nextElementSibling;
+      if (nextSibling && nextSibling.classList.contains('card')) {
+        currentCard.classList.remove("selected");
+        currentCard.classList.add("hide");
+        nextSibling.classList.remove("hide");
+        nextSibling.classList.add("selected");
+        console.log(nextSibling);
+      } else {
+        console.log('no more cards');
+        currentCard.classList.remove("selected");
+        currentCard.classList.add("hide");
+        document.querySelector(".content .card:nth-child(1)").classList.add("selected");
+        document.querySelector(".content .card:nth-child(1)").classList.remove("hide");
+      }
+    });
+
+    document.querySelector('.button-previous').addEventListener('click', function() {
+      const currentCard = document.querySelector(".card.selected");
+      const lastCard = document.querySelector(".controls").previousElementSibling;
+
+      if (currentCard) {
+        const previousSibling = currentCard.previousElementSibling;
+
+        if (previousSibling) {
+          currentCard.classList.remove("selected");
+          currentCard.classList.add("hide");
+          previousSibling.classList.remove("hide");
+          previousSibling.classList.add("selected");
+        } else {
+          currentCard.classList.remove("selected");
+          currentCard.classList.add("hide");
+          lastCard.classList.add("selected");
+          lastCard.classList.remove("hide");
+        }
+      } else {
+        console.log('no previous cards')
+      }
+
+    });
+
+    document.querySelector('.button-surprise button').addEventListener('click', function() {
+      document.querySelector('.card.selected').classList.add('hide');
+      document.querySelector('.card.selected').classList.remove('selected');
+      
+      const cardCount = document.querySelectorAll('.card').length;
+      const randomNumber = Math.floor(Math.random() * cardCount) + 1;
+      const randomCard = document.querySelector(`.card:nth-child(${randomNumber})`);
+
+      if (randomCard) {
+        randomCard.classList.remove("hide");
+        randomCard.classList.add("selected");
+        console.log(randomCard);
+      }
+    });
+  </script>
+</body>
+</html>
